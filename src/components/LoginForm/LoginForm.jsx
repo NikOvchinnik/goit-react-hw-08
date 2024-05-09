@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import { useId } from "react";
 import style from "./LoginForm.module.css";
 import { login } from "../../redux/auth/operations";
+import toast from "react-hot-toast";
 
 const initialValue = {
   email: "",
@@ -34,10 +35,10 @@ const RegistrationForm = () => {
     )
       .unwrap()
       .then(() => {
-        console.log("login success");
+       toast.success("Login success");
       })
       .catch(() => {
-        console.log("login error");
+        toast.error("Login error");
       });
 
     resetForm();

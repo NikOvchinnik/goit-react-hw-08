@@ -1,12 +1,20 @@
 import style from "./Contact.module.css";
 import { LiaAddressBook } from "react-icons/lia";
 import { LiaPhoneSolid } from "react-icons/lia";
-import { useDispatch } from "react-redux";
-import { deleteContact } from "../../redux/contacts/operations";
+import ModalDelete from "../ModalDelete/ModalDelete";
+import { useState } from "react";
 
 const Contact = ({ contact: { id, name, number }}) => {
   
-  const dispath = useDispatch();
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  function onOpenModal() {
+    setModalIsOpen(true);
+  }
+
+  function onCloseModal() {
+    setModalIsOpen(false);
+  }
 
   return (
     <li className={style.contactItem}>
@@ -23,11 +31,19 @@ const Contact = ({ contact: { id, name, number }}) => {
       <button
         className={style.contactBtnDelete}
         type="button"
-        onClick={() => dispath(deleteContact(id))}
+        onClick={() => {
+          onOpenModal();
+        }}
       >
         Delete
       </button>
-      
+      {modalIsOpen && (
+        <ModalDelete
+          modalIsOpen={modalIsOpen}
+          onCloseModal={onCloseModal}
+          idContact={id}
+        />
+      )}
     </li>
   );
 };

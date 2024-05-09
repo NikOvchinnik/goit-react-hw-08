@@ -3,7 +3,8 @@ import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 import { useId } from "react";
 import style from "./RegistrationForm.module.css"
-import {register} from "../../redux/auth/operations"
+import { register } from "../../redux/auth/operations"
+import toast from "react-hot-toast";
 
 const initialValue = {
   name: "",
@@ -40,8 +41,8 @@ const RegistrationForm = () => {
 
     dispatch(register(userData))
       .unwrap()
-      .then(() => console.log("Registration success!"))
-      .catch (() => console.log("User with this login already exists !"));
+      .then(() => toast.success("Registration success!"))
+      .catch(() => toast.error("User with this login already exists !"));
     
     resetForm();
   };

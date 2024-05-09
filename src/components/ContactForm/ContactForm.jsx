@@ -4,6 +4,9 @@ import style from "./ContactForm.module.css";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contacts/operations";
+import toast from "react-hot-toast";
+
+const notify = (name) => toast.success(`New contact ${name} has been added`);
 
 const initialValue = {
   name: "",
@@ -33,6 +36,7 @@ const ContactForm = () => {
       number: values.number.trim(),
     };
     dispath(addContact(newContact));
+    notify(newContact.name);
     actions.resetForm();
   };
 

@@ -1,0 +1,27 @@
+.modalContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modalText {
+  color: white;
+}
+
+.modalContainerText {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.modalBtn {
+  padding: 5px 10px;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+
+.modalBtn:hover {
+  border: 1px solid red;
+  color: red;
+}
