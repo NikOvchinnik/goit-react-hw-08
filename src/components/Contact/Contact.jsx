@@ -4,8 +4,7 @@ import { LiaPhoneSolid } from "react-icons/lia";
 import ModalDelete from "../ModalDelete/ModalDelete";
 import { useState } from "react";
 
-const Contact = ({ contact: { id, name, number }}) => {
-  
+const Contact = ({ contact: { id, name, number } }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   function onOpenModal() {
